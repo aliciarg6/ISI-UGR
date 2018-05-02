@@ -1,8 +1,12 @@
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+
+import com.google.api.client.googleapis.auth.clientlogin.ClientLogin.Response;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,7 +48,7 @@ public class HelloAppEngine extends HttpServlet {
 			PrintStream csv=new PrintStream(fout);  
 			csv.println("name	price	number sold");
 			for (int i=0; i < price.size()-2; i++) {
-				csv.println(address.get(i).text() + "	" + price.get(i).text());
+				csv.println(name.get(i).text() + "	" + price.get(i).text());
 			}
 			fout.close();
 
@@ -71,7 +75,7 @@ public class HelloAppEngine extends HttpServlet {
    * */
   public static int getStatusConnectionCode(String url) {
 		
-	    Response response = null;
+	    org.jsoup.Connection.Response response = null;
 		
 	    try {
 		response = Jsoup.connect("https://www.carrefour.es/supermercado/?DSPLogout=true&_requestid=3734880").userAgent("Mozilla/5.0").timeout(100000).ignoreHttpErrors(true).execute();
@@ -98,37 +102,6 @@ public class HelloAppEngine extends HttpServlet {
 	}
   
   
-  public class Scraping {
-		
-	    public static final String url = "https://jarroba.com/";
-		
-	    public static void main (String args[]) {
-			
-	        // Compruebo si me da un 200 al hacer la petición
-	        if (getStatusConnectionCode(url) == 200) {
-				
-	            // Obtengo el HTML de la web en un objeto Document
-	            Document document = getHtmlDocument(url);
-				
-	            // Busco todas las entradas que estan dentro de: 
-	            Elements entradas = document.select("div.col-md-4.col-xs-12").not("div.col-md-offset-2.col-md-4.col-xs-12");
-	            System.out.println("Número de entradas en la página inicial de Jarroba: "+entradas.size()+"\n");
-				
-	            // Paseo cada una de las entradas
-	            for (Element elem : entradas) {
-	                String titulo = elem.getElementsByClass("tituloPost").text();
-	                String autor = elem.getElementsByClass("autor").toString();
-	                String fecha = elem.getElementsByClass("fecha").text();
-					
-	                System.out.println(titulo+"\n"+autor+"\n"+fecha+"\n\n");
-					
-	                // Con el método "text()" obtengo el contenido que hay dentro de las etiquetas HTML
-	                // Con el método "toString()" obtengo todo el HTML con etiquetas incluidas
-	            }
-					
-	        }else
-	            System.out.println("El Status Code no es OK es: "+getStatusConnectionCode(url));
-	    }
-	}
+
   
 }
