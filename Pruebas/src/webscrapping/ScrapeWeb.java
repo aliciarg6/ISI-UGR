@@ -21,10 +21,10 @@ public class ScrapeWeb {
 			Scanner entrada = new Scanner(System.in);
 			String nombre = entrada.nextLine();
 			
-			Document document;
+			
 			try {
 				//Obtener HTML
-				document = Jsoup.connect("https://www.carrefour.es/supermercado/c?Ntt="+nombre+"&sb=true").get();
+				Document document = Jsoup.connect("https://www.carrefour.es/supermercado/c?Ntt="+nombre+"&sb=true").get();
 				Document doc = Jsoup.connect("https://www.hipercor.es/supermercado/buscar/?term="+nombre).get();
 				
 				//CARREFOUR

@@ -1,29 +1,28 @@
+package com.comparadorsamialicia;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Scanner;
+import java.io.PrintStream;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.jsoup.nodes.Element;
 
-import java.util.Scanner;
 
-import com.google.api.client.googleapis.auth.clientlogin.ClientLogin.Response;
 
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-
-/*
 @WebServlet(
     name = "HelloAppEngine",
     urlPatterns = {"/hello"}
 )
-*/
-public class HelloAppEngine /*extends HttpServlet */{
-/*
+public class HelloAppEngine extends HttpServlet {
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException {
@@ -32,19 +31,38 @@ public class HelloAppEngine /*extends HttpServlet */{
     response.setCharacterEncoding("UTF-8");
 
     response.getWriter().print("Hello App Engine!\r\n");
+    int num = numero();
+    response.getWriter().print(num);
+    String palabra = palabra();
+    response.getWriter().print(palabra);
+    
+    String resultado = ejecutar();
+    response.getWriter().print(resultado);
 
-  }*/
+  }
   
+  public int numero() {
+	  
+	 int numero=2;
+	 return numero;
+  }
   
-	public static void main(String args[]){
-		print("running...");
+  public String palabra() {
+	  String palabra="Practica ISI";
+	  return palabra;
+  }
+  
+  public String ejecutar() {
+
+		//System.out.println("Mete el nombre del producto:");
+		//Scanner entrada = new Scanner(System.in);
+		//String nombre = entrada.nextLine();
+		//String resultado = entrada.nextLine();
+		
+		String nombre = "agua";
+		String resultado = "agua";
 		
 		try {
-			
-			System.out.println("Mete el nombre del producto:");
-			Scanner entrada = new Scanner(System.in);
-			String nombre = entrada.nextLine();
-			
 			//Obtener HTML
 			Document document = Jsoup.connect("https://www.carrefour.es/supermercado/c?Ntt="+nombre+"&sb=true").get();
 			Document doc = Jsoup.connect("https://www.hipercor.es/supermercado/buscar/?term="+nombre).get();
@@ -119,21 +137,17 @@ public class HelloAppEngine /*extends HttpServlet */{
 				System.out.print(" ");
 				System.out.print(precioEroski.get(i).text());
 				System.out.println(" ");
+				resultado = nameEroski.get(i).text();
 			}
 			
 			System.out.println(" ");
 			System.out.println(" ");
 			
+		
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-
-	public static void print(String string) {
-		System.out.println(string);
-	}
-
-  
+		return resultado;
+  }
 }
