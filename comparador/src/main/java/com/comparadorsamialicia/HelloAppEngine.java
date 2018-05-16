@@ -31,26 +31,14 @@ public class HelloAppEngine extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
 
     response.getWriter().print("Hello App Engine!\r\n");
-    int num = numero();
-    response.getWriter().print(num);
-    String palabra = palabra();
-    response.getWriter().print(palabra);
+    
     
     String resultado = ejecutar();
     response.getWriter().print(resultado);
 
   }
   
-  public int numero() {
-	  
-	 int numero=2;
-	 return numero;
-  }
-  
-  public String palabra() {
-	  String palabra="Practica ISI";
-	  return palabra;
-  }
+ 
   
   public String ejecutar() {
 
