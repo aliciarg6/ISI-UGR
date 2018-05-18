@@ -15,13 +15,23 @@ import com.google.appengine.api.datastore.Entity;
 
 DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
 
-Entity book = new Entity("Book");
+Entity bebidas = new Entity("Bebidas");
 
-book.setProperty("title", "The Grapes of Wrath");
-book.setProperty("author", "John Steinbeck");
-book.setProperty("copyrightYear", 1939);
-Date authorBirthdate =
-    new GregorianCalendar(1902, Calendar.FEBRUARY, 27).getTime();
-book.setProperty("authorBirthdate", authorBirthdate);
+bebidas.setProperty("EAN", );
+book.setProperty("nombre", " ");
+book.setProperty("marca", "");
+book.setProperty("url", "");
+book.setProperty("tamanio", );
+book.setProperty("unidad", "");
+book.setProperty("supermercado", "");
 
-ds.put(book);
+ds.put(bebidas);
+
+
+private int EAN;
+private String nombre;
+private String marca;
+private String url;
+private int tamanio;
+private String unidad;
+private String supermercado;

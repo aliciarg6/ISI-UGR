@@ -32,14 +32,28 @@ public class HelloAppEngine extends HttpServlet {
 
     response.getWriter().print("Hello App Engine!\r\n");
     
+    String producto="agua";
+    obtenerEAN(producto);
     
-    String resultado = ejecutar();
-    response.getWriter().print(resultado);
+    
+    //String resultado = ejecutar();
+    //response.getWriter().print(resultado);
 
   }
   
- 
+  public void obtenerEAN( String producto) {
+	  Document doc = Jsoup.connect("https://www.hipercor.es/supermercado/buscar/?term="+producto).get();
+	  Elements ean = doc.select("p.info-item");
+	  
+	  for (int i=0; i<ean.size();i++) {
+		  System.out.println(ean.get(i));
+	  }
+	  
+	  
+  }
   
+ 
+  /*
   public String ejecutar() {
 
 		//System.out.println("Mete el nombre del producto:");
@@ -138,4 +152,7 @@ public class HelloAppEngine extends HttpServlet {
 		}
 		return resultado;
   }
+  
+  */
+  
 }
