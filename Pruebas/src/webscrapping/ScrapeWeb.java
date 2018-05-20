@@ -33,13 +33,18 @@ public class ScrapeWeb {
 				System.out.println("Nombre Supermercado: " + title);
 			
 				//Array de elementos con todos los precios
-				Elements info = document.select("article.item"); 
+				Elements capacidad = document.select("p.name-formato");
+				Elements marca = document.select("p.name-marca"); 
+				Elements precio = document.select("div.pre-bottom-inner"); 
+		
 				
 				//Imprimir todos los elementos
 				
-				for (int i=0; i < info.size(); i++) {
+				for (int i=0; i <capacidad.size(); i++) {
 					
-					System.out.print(info.get(i).text());
+					System.out.println(marca.get(i).text());
+					System.out.println(capacidad.get(i).text());
+					System.out.println(precio.get(i).text());
 					System.out.println(" ");
 				}
 				System.out.println("\n");
@@ -113,6 +118,8 @@ public class ScrapeWeb {
 		public static void print(String string) {
 			System.out.println(string);
 		}
+		
+		
 
 	  
 	
