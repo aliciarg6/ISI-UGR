@@ -2,30 +2,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>Hello App Engine</title>
+    <title>Comparador de Precios</title>
+    
+    
+<style type = "text/css">
+h1{
+font-size: 500%;
+text-align: center;
+}
+form{
+text-align: center;
+font-size: 300%;
+
+}
+section{
+width: 100%;
+float: left;
+}
+
+img{
+width: 30%;
+margin-left :10%;
+}
+
+</style>
   </head>
 
   <body>
-    <header>
-  	<h1>COMPARADOR DE PRECIOS </h1>
-  	<h2>Productos de Supermercado</h2>
-  	<h3>Alicia y Samia</h3>
-  	</header>
+    <h1>Comparador Precios de Supermercado</h1>
   
-   	<section>
-   	<form href='/hello' action='/hello' method="get">
-   	<textarea name="mensaje" placeholder="Escriba aqu&iacute; una nueva b&uacute;squeda"></textarea>
-  	<input type="button" value="Buscar" id="bot">
+
+   	<form action="/comparador" method="get">
+   	<label >Introduzca el nombre del producto</label>
+   	<br/>
+   	<input style="width:200px;height:35px" type="text" name="producto" class="comparador" placeholder="Escriba aqu&iacute; el producto">
+  	<input type="submit" value="Buscar"  class="comparador" id="bot">
   	</form>
+
+   	
+   	<section>
+   		<img  src="https://www.vectorlogo.es/wp-content/uploads/2015/09/logo-vector-carrefour-vertical.jpg" />
+   		<img  src="http://www.donfranquicia.com/fotos/EN18121138111115donfranquicia.jpeg" />
+   		<img class="dia" src=" http://www.inviertaenbolsa.com/wp-content/uploads/2014/12/Dia-logo.png" />
    	</section>
-  
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href='/hello'>The servlet</a></td>
-      </tr>
-    </table>
   </body>
 </html>
